@@ -1,7 +1,6 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import PrefCheckBox from "./prefCheckBox";
 import { Pref, Population } from "../types";
-import { useCheck } from "../hooks/useCheck";
 import { POPULATION_CONSTRUCTION } from "../constant";
 import { apiClient } from "../lib/apiClient";
 import { useCheckContext } from "../pages/_app";
@@ -12,7 +11,6 @@ type Props = {
 };
 
 const PrefCheckBoxList: FC<Props> = ({ prefList, ...props }) => {
-  // const { state, checkOn, checkOff } = useCheck();
   const { state, checkOn, checkOff } = useCheckContext();
   console.log(state.checkList);
 
@@ -60,8 +58,8 @@ const PrefCheckBoxList: FC<Props> = ({ prefList, ...props }) => {
   return (
     <>
       <div className="wrap">
-        {prefList.map((value) => (
-          <div className="button-box">
+        {prefList.map((value, index) => (
+          <div className="button-box" key={index}>
             <PrefCheckBox
               clickLogic={(isCheck) =>
                 onClick(value.prefName, value.prefCode)(isCheck)

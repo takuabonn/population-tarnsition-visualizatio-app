@@ -50,10 +50,6 @@ const reducer: React.Reducer<InitialState, CheckAction> = (
           ? {
               ...value,
               isCheck: true,
-              // prefCode: value.prefCode,
-              // label: value.label,
-              // data: value.data,
-              // borderColor: value.borderColor,
             }
           : value
       );
@@ -73,10 +69,6 @@ const reducer: React.Reducer<InitialState, CheckAction> = (
           ? {
               ...value,
               isCheck: false,
-              // prefCode: value.prefCode,
-              // label: value.label,
-              // data: value.data,
-              // borderColor: value.borderColor,
             }
           : value
       );
@@ -88,13 +80,11 @@ const reducer: React.Reducer<InitialState, CheckAction> = (
     case ActionType.ACTION_CHECK_ON:
       return {
         ...state,
-        // checkList: [...state.checkList, ...checkOnState()],
         checkList: checkOnState(),
       };
     case ActionType.ACTION_CHECK_OFF:
       return {
         ...state,
-        // checkList: [...state.checkList, ...checkOffState()],
         checkList: checkOffState(),
       };
     default:

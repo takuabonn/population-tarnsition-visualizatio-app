@@ -1,7 +1,6 @@
-import { FC, useEffect, useContext } from "react";
+import { FC } from "react";
 import {
   Chart,
-  registerables,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -9,18 +8,10 @@ import {
   Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { POPULATION_CONSTRUCTION } from "../constant";
-import { apiClient } from "../lib/apiClient";
-import { Population } from "../types";
-import { useCheck } from "../hooks/useCheck";
 import { useCheckContext } from "../pages/_app";
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip);
-type Props = {
-  prefCode: number;
-  isCheck: boolean;
-  prefName: string;
-};
+
 const PopulationTransitionGraph: FC = () => {
   // 1980 ~ 2045年までを配列化
   let yearArray: string[] = [];
@@ -30,7 +21,6 @@ const PopulationTransitionGraph: FC = () => {
     yearArray.push(`${String(value)}年`);
   }
 
-  // const { state, checkOn, checkOff } = useCheck();
   const { state, checkOn, checkOff } = useCheckContext();
 
   const graphData = {
